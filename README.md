@@ -37,6 +37,10 @@ Without this specification, the `Bill` repeats indefinitely (assuming that an `e
 * `until YYYY-MM-DD`:
 Specifies that the `Bill` should not be repeated past the given date.
 This does not guarantee that the `Bill` is applied on the given date.
+* `distribution X Y Z`:
+Specifies that the `Bill` should be distributed across the discretionary, emergency, and living balances as given by `X`, `Y`, and `Z`, respectively.
+If unspecified, the default is `distribution 0 0 100` - the `Bill` is applied entirely to the living balance.
+The three numbers should add to 100.
 * `actual`:
 Specifies that the `Bill` represents an actual transaction, as opposed to a projected transaction.
 Projected `Bill`s are ignored for any dates that line in the past, while actual `Bill`s are not ignored.
