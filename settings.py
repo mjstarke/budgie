@@ -13,3 +13,6 @@ PLOT_TOTAL =                       True
 # Whether emergency or living balances can deplete from discretionary.
 EMERGENCY_DEPLETES_DISCRETIONARY = True
 LIVING_DEPLETES_DISCRETIONARY =    True
+
+# Whether Bills are projected by default.  If False, Bills are actual by default.
+PROJECTED_BY_DEFAULT =             True

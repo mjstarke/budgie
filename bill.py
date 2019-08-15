@@ -1,4 +1,5 @@
 from datetime import date, datetime, timedelta
+from settings import *
 from typing import Tuple, Optional
 
 
@@ -103,7 +104,7 @@ class Bill:
         bill_until = None
         bill_repeat = 1e9
         bill_distribution = (0.0, 0.0, 1.0)
-        bill_actual = False
+        bill_actual = not PROJECTED_BY_DEFAULT
 
         for rule in s[3:]:
             ss = rule.strip().split()
@@ -141,6 +142,9 @@ class Bill:
 
             elif ss[0] == "actual":
                 bill_actual = True
+
+            elif ss[0] == "projected":
+                bill_actual = False
 
             else:
                 raise ValueError("Invalid Bill '{}':\nInvalid rule type in '{}'.".format(text, rule))
