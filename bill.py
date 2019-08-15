@@ -118,9 +118,9 @@ class Bill:
                 except ValueError:
                     raise ValueError("Invalid Bill '{}':\nInvalid date in '{}'.".format(text, rule))
 
-            elif ss[0] == "occurs":
+            elif ss[0] in ["occurs", "repeat", "repeats"]:
                 try:
-                    bill_repeat = int(ss[1])
+                    bill_repeat = int(ss[1]) + (1 if "repeat" in ss[0] else 0)
                 except ValueError:
                     raise ValueError("Invalid Bill '{}':\nInvalid number in '{}'.".format(text, rule))
 

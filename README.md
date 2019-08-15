@@ -37,6 +37,9 @@ Note that this does take month length into account; a `Bill` with this attribute
 * `occurs N times`:
 Specifies that the `Bill` should occur at most `N` times.
 Without this specification, the `Bill` repeats indefinitely (assuming that an `every` attribute is specified).
+* `repeat N times`:
+Specifies that the `Bill` should repeat at most `N` times.
+Similar to the `occurs` rule, but specifies number of *repeats* after the first application - so `repeat 3 times` causes the bill to be applied 4 times total.
 * `until YYYY-MM-DD`:
 Specifies that the `Bill` should not be repeated past the given date.
 This does not guarantee that the `Bill` is applied on the given date.
