@@ -35,15 +35,6 @@ while time[-1] < SIMULATION_END:
                 emergency[-1] += bill.emergency
                 discretionary[-1] += bill.discretionary
 
-                # if bill.total < 0:
-                #     living[-1] += bill.living
-                #     emergency[-1] += bill.emergency
-                #     discretionary[-1] += bill.discretionary
-                # else:
-                #     emergency[-1] += savings_cut * bill.amount
-                #     discretionary[-1] += discretionary_cut * bill.amount
-                #     living[-1] += (1 - (savings_cut + discretionary_cut)) * bill.amount
-
                 if living[-1] < 0:
                     discretionary[-1] += living[-1]
                     living[-1] = 0
@@ -51,16 +42,6 @@ while time[-1] < SIMULATION_END:
                 if emergency[-1] < 0:
                     discretionary[-1] += emergency[-1]
                     emergency[-1] = 0
-
-                # if (living[-1] < 0) and (discretionary[-1] > 0):
-                #     transfer = min(abs(living[-1]), discretionary[-1])
-                #     discretionary[-1] -= transfer
-                #     living[-1] += transfer
-                #
-                # if (living[-1] < 0) and (discretionary[-1] <= 0):
-                #     transfer = min(abs(living[-1]), emergency[-1])
-                #     emergency[-1] -= transfer
-                #     living[-1] += transfer
 
         if time[-1] == PRESENT_DATE:
             present_balance = discretionary[-1] + emergency[-1] + living[-1]
