@@ -7,5 +7,5 @@ Paycheck, 400.00, 2019-07-29, every 14 days, distribution 20 10 70
 Monthly bill, -130.00, 2019-07-27, every 1 month
 Groceries, -70.70, 2019-08-03, every 10 days
 Monthly service to be terminated, -50.00, 2019-07-30, every 1 month, until 2019-09-30
-Temporary weekly service, -12.50, 2019-07-25, every 7 days, repeat 10 times
+Temporary weekly service, -12.50, 2019-07-25, every 7 days, occurs 10 times
 Discretionary weekly service, -15.00, 2019-08-01, every 7 days, distribution 100 0 0

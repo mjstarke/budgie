@@ -31,8 +31,8 @@ Specifies that the `Bill` should be repeated every `N` days after the first occu
 Specifies that the `Bill` should be repeated every `N` months after the first occurrence specified above.
 Note that this does take month length into account; a `Bill` with this attribute will always repeat on the same day of each `N`th month.
 *The behavior of a* `Bill` *with this attribute with a day 29, 30, or 31 is currently undefined.*
-* `repeat N times`:
-Specifies that the `Bill` should be repeated at most `N` times.
+* `occurs N times`:
+Specifies that the `Bill` should occur at most `N` times.
 Without this specification, the `Bill` repeats indefinitely (assuming that an `every` attribute is specified).
 * `until YYYY-MM-DD`:
 Specifies that the `Bill` should not be repeated past the given date.
@@ -52,7 +52,7 @@ An initial balance should always be supplied, or `budgie` assumes that the initi
 * `Rent, -725, 2019-06-13, every 1 month`
 
 This `Bill` is applied on the 13th of every month, starting with June 2019.
-Because neither `until` nor `repeat` is specified, it will repeat indefinitely.
+Because neither `until` nor `occurs` is specified, it will repeat indefinitely.
 
 * `Rent paid, -723.57, 2019-06-13, actual`
 
@@ -65,7 +65,7 @@ This latter `Bill`, on the other hand, is applied regardless.
 This `Bill` is applied monthly, but will not be applied after `2019-09-25`.
 This means the last valid date for this `Bill` is actually `2019-08-30`.
 
-* `Weekly installments, -12.50, 2019-07-25, every 7 days, repeat 10 times`
+* `Weekly installments, -12.50, 2019-07-25, every 7 days, occurs 10 times`
 
 This `Bill` is applied weekly, and expires after 10 applications total.
 
@@ -74,8 +74,8 @@ This `Bill` is applied weekly, and expires after 10 applications total.
 This `Bill` is applied every 30 days, which means it will not necessarily be on the first of each month.
 The `distribution` is specified, which in this case indicates that it is entirely discretionary.
 
-* `Lorem ipsum, -30, 2019-07-15, every 1 day, until 2019-07-31, repeat 10 times`
+* `Lorem ipsum, -30, 2019-07-15, every 1 day, until 2019-07-31, occurs 10 times`
 
 This `Bill` is applied daily, and expires after 10 applications.
-If both `until` and `repeat` are specified, the `Bill` expires after either limit is reached - in this case, the number of repeats. 
+If both `until` and `occurs` are specified, the `Bill` expires after either limit is reached - in this case, the number of repeats. 
 
