@@ -136,6 +136,9 @@ class Bill:
             elif ss[0] == "actual":
                 bill_actual = True
 
+            else:
+                raise ValueError("Invalid Bill '{}':\nInvalid rule type in '{}'.".format(text, rule))
+
         return Bill(bill_name, bill_value, bill_date,
                     bill_every, bill_repeat, bill_until, bill_distribution, bill_actual)
 
