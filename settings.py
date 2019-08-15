@@ -1,5 +1,8 @@
 from datetime import date
 
-GRAPH_START =                      date(2019, 7, 22)
-GRAPH_END =                        date(2020, 7, 22)
+# The bounds of the simulation.  Bills occurring outside of this date range are ignored.
+SIMULATION_START =                 date(2019, 7, 22)
+SIMULATION_END =                   date(2020, 7, 22)
+
+# The date to use as the present date.  Projected Bills before this date are not applied.
 PRESENT_DATE =                     date.today()

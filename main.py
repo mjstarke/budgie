@@ -21,9 +21,9 @@ for bill in bills:
 living = [0]
 emergency = [0]
 discretionary = [0]
-time = [GRAPH_START - timedelta(days=1)]
+time = [SIMULATION_START - timedelta(days=1)]
 present_balance = 0
-while time[-1] < GRAPH_END:
+while time[-1] < SIMULATION_END:
     time.append(time[-1] + timedelta(days=1))
     living.append(living[-1])
     emergency.append(emergency[-1])
@@ -96,7 +96,7 @@ for d in range(discretionary.shape[0] - 1):
                 legend_handles.append(q)
                 legend_labels.append("Discretionary Balanced Depleted")
 
-q = ax.axvspan(GRAPH_START, PRESENT_DATE, facecolor="cyan", alpha=0.5)
+q = ax.axvspan(SIMULATION_START, PRESENT_DATE, facecolor="cyan", alpha=0.5)
 legend_handles.append(q)
 legend_labels.append("Actual Budget")
 
@@ -111,7 +111,7 @@ ax.set_xticklabels([["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Se
 ax.set_yticklabels(["${:.0f}".format(i) for i in ax.get_yticks()])
 
 plt.title("Projected budget from {} to {}\n"
-          "Current balance ${:.2f} as of {}".format(GRAPH_START.strftime("%Y %B %d"),
+          "Current balance ${:.2f} as of {}".format(SIMULATION_START.strftime("%Y %B %d"),
                                                     time[-1].strftime("%Y %B %d"),
                                                     present_balance,
                                                     PRESENT_DATE.strftime("%Y %B %d"))
