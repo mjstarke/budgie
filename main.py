@@ -12,7 +12,7 @@ def running_average(x: np.ndarray, n: int):
 
 
 with open("sample_bills.csv", "r") as f:
-    bills = [Bill.from_csv(line) for line in f if (len(line.strip()) > 0) and (line[0] != "#")]
+    bills = [Bill.from_csv(line.strip()) for line in f if (len(line.strip()) > 0) and (line[0] != "#")]
 
 for bill in bills:
     if bill.irrelevant and not bill.actual:
