@@ -82,24 +82,57 @@ class Bill:
             raise ValueError("Invalid Bill '{}':\nAt least name, value, and date must be given.".format(text))
 
         bill_name = s[0].strip()
-        bill_value = float(s[1].strip())
-        bill_date = datetime.strptime(s[2].strip(), "%Y-%m-%d").date()
+
+        try:
+            bill_value = float(s[1].strip())
+        except ValueError:
+            raise ValueError("Invalid Bill '{}':\nValue is not a number.".format(text))
+
+        try:
+            bill_date = datetime.strptime(s[2].strip(), "%Y-%m-%d").date()
+        except ValueError:
+            raise ValueError("Invalid Bill '{}':\nDate is not valid.".format(text))
 
         bill_every = None
         bill_until = None
         bill_repeat = 1e9
         bill_distribution = (0.0, 0.0, 1.0)
         bill_actual = False
+
         for rule in s[3:]:
             ss = rule.strip().split()
             if ss[0] == "every":
-                bill_every = ss[1] + " " + ss[2]
+                try:
+                    bill_every = ss[1] + " " + ss[2]
+                    _ = int(ss[1])
+                    if ss[2] not in ["month", "months", "day", "days"]:
+                        raise ValueError("Invalid Bill '{}':\nInvalid repetition period unit in '{}'.".format(text, rule))
+                except ValueError:
+                    raise ValueError("Invalid Bill '{}':\nInvalid repetition period number in '{}'.".format(text, rule))
+                except IndexError:
+                    raise ValueError("Invalid Bill '{}':\nInvalid repetition period in '{}'.".format(text, rule))
+
             elif ss[0] == "until":
-                bill_until = datetime.strptime(ss[1], "%Y-%m-%d").date()
+                try:
+                    bill_until = datetime.strptime(ss[1], "%Y-%m-%d").date()
+                except ValueError:
+                    raise ValueError("Invalid Bill '{}':\nInvalid date in '{}'.".format(text, rule))
+
             elif ss[0] == "repeat":
-                bill_repeat = int(ss[1])
+                try:
+                    bill_repeat = int(ss[1])
+                except ValueError:
+                    raise ValueError("Invalid Bill '{}':\nInvalid number in '{}'.".format(text, rule))
+
             elif ss[0] == "distribution":
-                bill_distribution = tuple(float(a) / 100 for a in ss[1:4])
+                try:
+                    bill_distribution = tuple(float(a) / 100 for a in ss[1:4])
+                    _ = ss[3]
+                except ValueError:
+                    raise ValueError("Invalid Bill '{}':\nInvalid number in '{}'.".format(text, rule))
+                except IndexError:
+                    raise ValueError("Invalid Bill '{}':\nDistribution must have three values in '{}'.".format(text, rule))
+
             elif ss[0] == "actual":
                 bill_actual = True
 
