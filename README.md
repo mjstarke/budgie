@@ -8,7 +8,7 @@ A simple budget projection tool.
 
 ### Bills
 
-`budgie` uses its own `Bill` class to organize its data.
+*budgie* uses its own `Bill` class to organize its data.
 Each `Bill` represents an adjustment to current balance, whether recurring or not.
 `Bill`s are specified in `bills.csv`, one per line.
 Attributes of each `Bill` are separated by commas.
@@ -19,7 +19,7 @@ A `Bill`'s name is only for your own reference.
 2. Value.
 How much of an adjustment to make.
 Should be negative for a debit and positive for a credit.
-`budgie` is currency-agnostic, and assumes you specify every `Bill` in the same currency.
+*budgie* is currency-agnostic, and assumes you specify every `Bill` in the same currency.
 3. Date.
 The date that the `Bill` is first valid.
 Must be specified as YYYY-MM-DD.
@@ -47,7 +47,7 @@ Projected `Bill`s are ignored for any dates that line in the past, while actual 
 
 This `Bill` is applied only once.
 Because its value is positive, it is a credit.
-An initial balance should always be supplied, or `budgie` assumes that the initial balance is zero.
+An initial balance should always be supplied, or *budgie* assumes that the initial balance is zero.
 
 * `Rent, -725, 2019-06-13, every 1 month`
 
