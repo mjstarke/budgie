@@ -11,7 +11,7 @@ A simple budget projection tool.
 *budgie* uses its own `Bill` class to organize its data.
 Each `Bill` represents an adjustment to current balance, whether recurring or not.
 `Bill`s are specified in `bills.csv`, one per line.
-Attributes of each `Bill` are separated by commas.
+Attributes and rules of each `Bill` are separated by commas.
 The first three attributes must always be present, and must always be in the right order:
 1. Name.
 This can be anything, and doesn't even have to be unique.
@@ -22,9 +22,9 @@ Should be negative for a debit and positive for a credit.
 *budgie* is currency-agnostic, and assumes you specify every `Bill` in the same currency.
 3. Date.
 The date that the `Bill` is first valid.
-Must be specified as YYYY-MM-DD.
+Must be specified as `YYYY-MM-DD`, where month and day are always two digits (`09`, not `9`).
 
-There are several more optional attributes which may be specified:
+There are several optional rules which may be specified, and their order does not matter:
 * `every N days`:
 Specifies that the `Bill` should be repeated every `N` days after the first occurrence specified above.
 * `every N months`:
