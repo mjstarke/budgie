@@ -77,6 +77,12 @@ class Bill:
 
     @staticmethod
     def from_csv(text: str) -> "Bill":
+        """
+        Creates a Bill from the given text.  The text should be a line from a CSV file containing Bill specifications.
+        See README.md for details.
+        :param text: The Bill specification.
+        :return: A Bill instance.
+        """
         s = text.split(",")
         if len(s) < 3:
             raise ValueError("Invalid Bill '{}':\nAt least name, value, and date must be given.".format(text))
