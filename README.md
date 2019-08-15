@@ -45,6 +45,17 @@ The three numbers should add to 100.
 Specifies that the `Bill` represents an actual transaction, as opposed to a projected transaction.
 Projected `Bill`s are ignored for any dates that line in the past, while actual `Bill`s are not ignored.
 
+#### Balance and Distribution
+
+*budgie* splits balance into three categories: discretionary, emergency, and living.
+By default, all `Bill`s are applied entirely to the living balance.
+If the `distribution` rule is never set for any `Bill`, the living balance is the only balance that will change under normal circumstances.
+
+If discretionary balance goes negative, nothing special happens.
+If living or emergency balances go negative, the deficit is instead withdrawn from the discretionary balance.
+For instance, if the living balance is 200 and discretionary is 20, and a `Bill` is applied which subtracts 300 from living,
+then living is set to 0 while discretionary goes to -80.
+
 #### Examples
 
 * `Initial balance, 2000, 2019-07-22`
