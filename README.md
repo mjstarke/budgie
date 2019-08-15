@@ -103,9 +103,10 @@ This latter `Bill`, on the other hand, is applied regardless.
 This `Bill` is applied monthly, but will not be applied after `2019-09-25`.
 This means the last valid date for this `Bill` is actually `2019-08-30`.
 
-* `Weekly installments, -12.50, 2019-07-25, every 7 days, occurs 10 times`
+* `Weekly installments, -12.50, 2019-07-25, every 7 days, repeat 10 times`
 
-This `Bill` is applied weekly, and expires after 10 applications total.
+This `Bill` is applied weekly, and expires after repeating 10 times.
+This means that the `Bill` is applied a total of 11 times.
 
 * `Video streaming service, -15.00, 2019-08-01, every 30 days, distribution 100 0 0`
 
