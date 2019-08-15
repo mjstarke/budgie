@@ -48,6 +48,10 @@ while time[-1] < GRAPH_END:
                     discretionary[-1] += living[-1]
                     living[-1] = 0
 
+                if emergency[-1] < 0:
+                    discretionary[-1] += emergency[-1]
+                    emergency[-1] = 0
+
                 # if (living[-1] < 0) and (discretionary[-1] > 0):
                 #     transfer = min(abs(living[-1]), discretionary[-1])
                 #     discretionary[-1] -= transfer
