@@ -6,3 +6,6 @@ SIMULATION_END =                   date(2020, 7, 22)
 
 # The date to use as the present date.  Projected Bills before this date are not applied.
 PRESENT_DATE =                     date.today()
+
+# Whether to plot the total balance in addition to the constituent balances.
+PLOT_TOTAL =                       True

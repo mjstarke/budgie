@@ -75,13 +75,17 @@ line_1, = ax.plot(time, living, label="Living Balance", color="green")
 line_2, = ax.plot(time, emergency, label="Emergency Balance", color="orange")
 line_3, = ax.plot(time, discretionary, label="Discretionary Balance", color="purple")
 line_4, = ax.plot(time, -discretionary, label="Negative Discretionary Balance", color="purple", linestyle="dashed")
-# ax.plot(time, living + emergency + discretionary, label="Total Balance", color="black")
 
 legend_handles = [line_1, line_2, line_3, line_4]
 legend_labels = ["Living Balance",
                  "Emergency Balance",
                  "Discretionary Balance",
                  "Negative Discretionary Balance"]
+
+if PLOT_TOTAL:
+    line_5, = ax.plot(time, living + emergency + discretionary, label="Total Balance", color="black")
+    legend_handles.append(line_5)
+    legend_labels.append("Total Balance")
 
 for d in range(discretionary.shape[0] - 1):
     if time[d] >= PRESENT_DATE:
