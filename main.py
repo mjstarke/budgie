@@ -35,11 +35,11 @@ while time[-1] < SIMULATION_END:
                 emergency[-1] += bill.emergency
                 discretionary[-1] += bill.discretionary
 
-                if living[-1] < 0:
+                if LIVING_DEPLETES_DISCRETIONARY and living[-1] < 0:
                     discretionary[-1] += living[-1]
                     living[-1] = 0
 
-                if emergency[-1] < 0:
+                if EMERGENCY_DEPLETES_DISCRETIONARY and emergency[-1] < 0:
                     discretionary[-1] += emergency[-1]
                     emergency[-1] = 0
 

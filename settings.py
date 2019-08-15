@@ -9,3 +9,7 @@ PRESENT_DATE =                     date.today()
 
 # Whether to plot the total balance in addition to the constituent balances.
 PLOT_TOTAL =                       True
+
+# Whether emergency or living balances can deplete from discretionary.
+EMERGENCY_DEPLETES_DISCRETIONARY = True
+LIVING_DEPLETES_DISCRETIONARY =    True
