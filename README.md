@@ -49,7 +49,11 @@ If unspecified, the default is `distribution 0 0 100` - the `Bill` is applied en
 The three numbers should add to 100.
 * `actual`:
 Specifies that the `Bill` represents an actual transaction, as opposed to a projected transaction.
-Projected `Bill`s are ignored for any dates that line in the past, while actual `Bill`s are not ignored.
+Actual `Bill`s are applied regardless of what date they occur on.
+* `projected`:
+Specifies that the `Bill` represents one or more projected transactions.
+Projected `Bill`s are not applied at dates that are in the past.
+`Bill`s are projected by default (but see `PROJECTED_BY_DEFAULT` in `settings.py`).
 
 #### Balance and Distribution
 
