@@ -80,7 +80,7 @@ Initial balance should be an `actual` `Bill`, so that it is applied even if it i
 
 This `Bill` is a credit applied biweekly.
 
-* `Paycheck, 453,22, 2019-07-28, actual, distribution 20 10 70`
+* `Paycheck, 453.22, 2019-07-28, actual, distribution 20 10 70`
 * `Paycheck, 437.29, 2019-08-11, actual, distribution 20 10 70`
 
 These `Bill`s are the `actual` instances of the above Paycheck `Bill`.
