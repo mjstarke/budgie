@@ -19,7 +19,10 @@ A `Bill`'s name is only for your own reference.
 2. Value.
 How much of an adjustment to make.
 Should be negative for a debit and positive for a credit.
+Positive values can be, but do have to be, preceded by a `+`.
+Negative values have to be preceded by a `-`.
 *budgie* is currency-agnostic, and assumes you specify every `Bill` in the same currency.
+Currency symbols or designators should not be supplied.
 3. Date.
 The date that the `Bill` is first valid.
 Must be specified as `YYYY-MM-DD`, where month and day are always two digits (`09`, not `9`).
