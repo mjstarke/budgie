@@ -64,11 +64,24 @@ then living is set to 0 while discretionary goes to -80.
 
 #### Examples
 
-* `Initial balance, 2000, 2019-07-22`
+* `Initial balance, 2000, 2019-07-22, distribution 20 30 50`
 
 This `Bill` is applied only once.
 Because its value is positive, it is a credit.
+Its `distribution` splits it into 20% discretionary, 50% emergency, and 30% living.
 An initial balance should always be supplied, or *budgie* assumes that the initial balance is zero.
+Initial balance should be an `actual` `Bill`, so that it is applied even if it is in the past.
+
+* `Paycheck, +450, 2019-07-28, every 14 days, distribution 20 10 70`
+
+This `Bill` is a credit applied biweekly.
+
+* `Paycheck, 453,22, 2019-07-28, actual, distribution 20 10 70`
+* `Paycheck, 437.29, 2019-08-11, actual, distribution 20 10 70`
+
+These `Bill`s are the `actual` instances of the above Paycheck `Bill`.
+Since the recurring `Bill` is not `actual`, it will not be applied at dates in the past.
+These two `actual` `Bill`s will be applied instead, and they also contain exact values whereas the recurring `Bill` only provides an estimated value.
 
 * `Rent, -725, 2019-06-13, every 1 month`
 
