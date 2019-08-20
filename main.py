@@ -3,10 +3,19 @@ from datetime import date, timedelta
 import matplotlib.pyplot as plt
 import numpy as np
 from settings import *
-from typing import List, Tuple
+from typing import List
 
 
-def running_average(x: np.ndarray, n: int):
+def running_average(x: np.ndarray, n: int) -> List[float]:
+    """
+    Calculates the conditionally partial running average of a 1-D array of numbers.  For the first n-1 elements of the
+    array, the partial running average includes all elements up to and including the element itself.  For the remaining
+    elements, the running average uses n elements.
+    :param x: The array of numbers for which to compute a running average.
+    :param n: The number of elements (at most) to use to computer the running average for a given element.
+    :return: The running average for each element.  This list has the same number of elements as the first dimension of
+    x.
+    """
     cumsum = np.cumsum(x)
     return [(cumsum[i] - cumsum[i - n]) / n if i >= n else (cumsum[i] / (i + 1)) for i in range(len(x))]
 
