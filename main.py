@@ -14,9 +14,11 @@ def running_average(x: np.ndarray, n: int):
 with open("sample_bills.csv", "r") as f:
     bills = [Bill.from_csv(line.strip()) for line in f if (len(line.strip()) > 0) and (line[0] != "#")]
 
-for bill in bills:
-    if bill.irrelevant and not bill.actual:
-        print("/!\\ NOTICE: Bill '{}' is irrelevant, as all of its dates are in the past.".format(bill.name))
+irrelevant_bills = [bill for bill in bills if bill.irrelevant and not bill.actual]
+
+if len(irrelevant_bills) > 0:
+    print("NOTICE: The following bills are irrelevant, as all of their dates are in the past:\n"
+          "   {}".format(", ".join([bill.name for bill in irrelevant_bills])))
 
 living = [0]
 emergency = [0]
