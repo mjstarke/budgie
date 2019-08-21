@@ -1,5 +1,5 @@
 from bill import Bill
-from datetime import date, timedelta
+from datetime import timedelta
 import matplotlib.pyplot as plt
 import numpy as np
 from settings import *
